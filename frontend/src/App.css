@@ -1,0 +1,135 @@
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: #fff !important;
+  font-family: Roboto !important;
+}
+
+.navbar_ppc {
+  background-color: #333333;
+  max-height: 10rem;
+}
+
+.footer {
+  width: 100%;
+  max-width: 100%;
+  position: sticky;
+  bottom: 0;
+}
+
+p {
+  margin-bottom: 0 !important;
+}
+
+a.footer-link,
+a.footer-link:hover {
+  color: white !important;
+  text-decoration: none;
+}
+
+.btn-secondary {
+  margin: 5px;
+  background-color: #333333 !important;
+  border-color: #333333 !important;
+}
+
+.btn-secondary:hover,
+.btn-secondary:active,
+.btn-secondary.active {
+  background-color: #5a5a5a !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.text-footer,
+.donate_addr {
+  font-size: 0.8rem !important;
+}
+
+.back-to-top {
+  color: white;
+  text-align: right;
+}
+
+.back-to-top-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.header-text {
+  color: white;
+  font-size: 1.5rem;
+}
+
+.lds-ring {
+  display: inline-block;
+  position: relative;
+  width: 64px;
+  height: 64px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 51px;
+  height: 51px;
+  margin: 6px;
+  border: 6px solid rgb(60, 176, 84);
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: rgb(60, 176, 84) transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.donate_addr {
+  text-align: center;
+}
+.footer-donation-text-mobile {
+  display: none;
+}
+
+.div-link:hover {
+  color: grey;
+}
+
+@media screen and (max-width: 768px) {
+  .footer p,
+  .text-footer {
+    text-align: center;
+  }
+  .header-text {
+    font-size: 1rem;
+  }
+  .back-to-top-container {
+    justify-content: center;
+  }
+  .footer-donation-text {
+    display: none;
+  }
+  .footer-donation-text-mobile {
+    display: block;
+  }
+  .logo {
+    height: 2rem !;
+  }
+}
