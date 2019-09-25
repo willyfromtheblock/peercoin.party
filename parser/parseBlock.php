@@ -31,7 +31,7 @@ while ($RedisBlockHeight <= $HeightInClient) {
     }
 
     //write to Redis
-    writeToRedis("block:$CurrentBlockNumber", json_encode(array("time" => $Block["time"], "hash" => $Block["hash"], "flags" => $Block["flags"])));
+    writeToRedis("block:$CurrentBlockNumber", json_encode(array("time" => $Block["time"], "hash" => $Block["hash"], "flags" => $Block["flags"], "nTx" => $Block["nTx"])));
 
     //update blockheight
     writeToRedis("blockheight", $CurrentBlockNumber + 1);
