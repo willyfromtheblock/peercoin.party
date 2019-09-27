@@ -67,6 +67,14 @@ a.footer-link:hover {
   font-size: 1.5rem;
 }
 
+.footnote-star {
+  font-size: 0.9rem;
+}
+
+.footnote {
+  font-size: 0.7rem;
+}
+
 .lds-ring {
   display: inline-block;
   position: relative;

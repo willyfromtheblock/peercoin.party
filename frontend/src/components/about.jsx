@@ -12,7 +12,8 @@ const About = () => {
         >
           Peercoin
         </a>{" "}
-        block hash is turned into a beautiful and unique drawing.
+        block hash is turned into a beautiful and unique
+        <span className="footnote-star">*</span> drawing.
         <p>
           Created with love and made possible by{" "}
           <a
@@ -29,7 +30,7 @@ const About = () => {
           <a
             href="https://ppc.lol/5XPvF"
             target="_blank"
-            rel="noopener noreferrer "
+            rel="noopener noreferrer"
           >
             Peercoinexplorer.net
           </a>
@@ -45,6 +46,16 @@ const About = () => {
             alt="mail"
           />
           hi@peercoin.party
+        </p>
+        <p className="mt-2 footnote">
+          * approximately 873,600 available{" "}
+          <a
+            href="https://ppc.lol/gL9nW"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            read more
+          </a>
         </p>
       </div>
     </div>
