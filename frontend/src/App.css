@@ -14,9 +14,10 @@ html {
 .footer {
   width: 100%;
   max-width: 100%;
-  position: sticky;
+  position: fixed;
   bottom: 0;
   height: 50px;
+  margin-top: -50px;
 }
 
 p {
