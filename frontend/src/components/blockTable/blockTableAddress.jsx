@@ -9,36 +9,36 @@ const BlockTableAddress = ({
   showModal,
   lowestBlock,
   raiseLowestBlock,
-  raiseHighestBlock,
   searchAddress
 }) => {
   const [blockData, setBlockData] = useState([]);
-  const [hasMore, setMore] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
+  const [currentScroll, setCurrentScroll] = useState(0);
+  const [hasMore, setMore] = useState(true);
 
   const fetchBlocks = async scroll => {
+    let newScroll = scroll;
+    if (initialLoad) {
+      const lenResult = await http.get("len.php?address=" + searchAddress);
+      raiseLowestBlock(lenResult.data.length);
+      setInitialLoad(false);
+    } else {
+      if (scroll + 15 <= lowestBlock - 1) {
+        newScroll += 15;
+      } else {
+        setMore(false);
+      }
+    }
     const result = await http.get(
-      "blocks.php?address=" + searchAddress + "&scroll=" + scroll
+      "blocks.php?address=" + searchAddress + "&scroll=" + newScroll
     );
     const mergedData = blockData.concat(result.data);
     setBlockData(mergedData);
-    if (initialLoad) {
-      raiseLowestBlock(0);
-    } else {
-      raiseLowestBlock(lowestBlock + 15);
-    }
-    // if (initialLoad) raiseHighestBlock(Object.keys(result.data[0]));
-    setInitialLoad(false);
+    setCurrentScroll(newScroll);
   };
 
   const loadMore = () => {
-    // if (lowestBlock < 15 && lowestBlock !== 0) setMore(false);
-    // else fetchBlocks(lowestBlock === 0 ? "0" : lowestBlock - 1);
-    if (initialLoad) {
-      fetchBlocks(0);
-    } else {
-      fetchBlocks(lowestBlock + 15);
-    }
+    fetchBlocks(currentScroll);
   };
 
   if (!blockData) return null;

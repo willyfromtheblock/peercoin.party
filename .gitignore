@@ -1,2 +1,3 @@
 parser/config.php
 frontend/.env.development
+backend/config.php
