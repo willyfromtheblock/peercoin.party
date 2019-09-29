@@ -54,7 +54,7 @@ const BlockTableAddress = ({
 
   return (
     <div className="container">
-      <h3 className="text-center"> {searchAddress} </h3>
+      <h3 className="text-center text-break"> {searchAddress} </h3>
       <InfiniteScroll
         pageStart={0}
         loadMore={() => loadMore()}
