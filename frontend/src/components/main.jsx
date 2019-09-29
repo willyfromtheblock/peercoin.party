@@ -12,9 +12,7 @@ const Main = () => {
   const [modalBlockSelectedData, setModalBlockSelectedData] = useState({});
   const [lowestBlock, setLowestBlock] = useState(0);
   const [highestBlock, setHighestBlock] = useState(0);
-  const [searchAddress, setSearchAddress] = useState(
-    "PAmC3sKegu6AEZQdfXdPFNuoe6jfa9hCz4"
-  );
+  const [searchAddress, setSearchAddress] = useState(undefined);
 
   return (
     <React.Fragment>
@@ -28,6 +26,7 @@ const Main = () => {
           showModal={setModalStep}
           hideModal={() => setModalStep(0)}
           highestBlock={highestBlock}
+          raiseSearchAddress={setSearchAddress}
         />
         <Hero showModal={x => setModalStep(x)} />
         <hr className="col-xs-12" />

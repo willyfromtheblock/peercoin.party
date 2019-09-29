@@ -3,7 +3,6 @@ import BlockTable from "./blockTable";
 import BlockTableAddress from "./blockTableAddress";
 
 const TableSwitch = props => {
-  console.log("render");
   if (props.searchAddress === undefined) {
     return <BlockTable {...props} />;
   } else {

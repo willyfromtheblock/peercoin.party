@@ -42,6 +42,21 @@ const Hero = ({ showModal }) => {
               Find Block
             </span>
           </button>
+          <button
+            className="btn btn-secondary my-3"
+            type="button"
+            onClick={() => showModal("searchaddress")}
+          >
+            <span className="align-items-center" style={{ display: "flex" }}>
+              <img
+                className="mr-2"
+                src="assets/img/search-block.png"
+                style={{ width: "1rem" }}
+                alt="search"
+              />
+              Search address
+            </span>
+          </button>
         </div>
       </div>
       <div className="row justify-content-center">

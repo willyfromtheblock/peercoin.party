@@ -4,6 +4,7 @@ import DonationModal from "./donationModal";
 import BlockModal from "./blockModal";
 import FindBlock from "./findBlock";
 import BlockSingle from "./blockSingle";
+import SearchAddress from "./searchAddress";
 
 const ModalWrapper = ({
   modalStep,
@@ -11,7 +12,8 @@ const ModalWrapper = ({
   hideModal,
   raiseModalBlockSelectedData,
   showModal,
-  highestBlock
+  highestBlock,
+  raiseSearchAddress
 }) => {
   const renderModalStepBody = () => {
     switch (modalStep) {
@@ -34,6 +36,13 @@ const ModalWrapper = ({
             block={modalBlockSelectedData["blockIndex"]}
           />
         );
+      case "searchaddress":
+        return (
+          <SearchAddress
+            raiseSearchAddress={raiseSearchAddress}
+            showModal={x => showModal(x)}
+          />
+        );
       default:
         return;
     }
@@ -48,6 +57,8 @@ const ModalWrapper = ({
         return "Block #" + modalBlockSelectedData["blockIndex"];
       case "findblock":
         return "Find block by block number";
+      case "searchaddress":
+        return "Display all blocks for a specific address";
       default:
         return;
     }
