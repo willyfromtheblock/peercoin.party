@@ -1,15 +1,15 @@
 import React, { useState } from "react";
-import http from "../services/httpService";
+import http from "../../services/httpService";
 import InfiniteScroll from "react-infinite-scroller";
-import BlockCart from "./common/blockCart";
-import Loader from "./common/loader";
+import BlockCart from "../common/blockCart";
+import Loader from "../common/loader";
 
 const BlockTable = ({
   raiseModalBlockSelectedData,
   showModal,
   lowestBlock,
-  setLowestBlock,
-  setHighestBlock
+  raiseLowestBlock,
+  raiseHighestBlock
 }) => {
   const [blockData, setBlockData] = useState([]);
   const [hasMore, setMore] = useState(true);
@@ -19,8 +19,7 @@ const BlockTable = ({
     const result = await http.get("blocks.php?scroll=" + scroll);
     const mergedData = blockData.concat(result.data);
     setBlockData(mergedData);
-    setLowestBlock(Object.keys(result.data[result.data.length - 1])[0]);
-    if (initialLoad) setHighestBlock(Object.keys(result.data[0]));
+    raiseLowestBlock(Object.keys(result.data[result.data.length - 1])[0]);
     setInitialLoad(false);
   };
 

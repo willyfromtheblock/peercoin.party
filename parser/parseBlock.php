@@ -33,20 +33,22 @@ while ($RedisBlockHeight <= $HeightInClient) {
     //get foundby
     $BlockType = $Block["flags"];
     $FoundBy = "";
-    if (strpos($BlockType, "proof-of-stake") !== false) {
-        try {
-            $txDecoded = $peercoin->getrawtransaction($Block["tx"][1], 1);
-        } catch (Exception $e) {
-            die($e->getMessage());
+    if ($CurrentBlockNumber > 0) {
+        if (strpos($BlockType, "proof-of-stake") !== false) {
+            try {
+                $txDecoded = $peercoin->getrawtransaction($Block["tx"][1], 1);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+            $FoundBy = $txDecoded["vout"][1]["scriptPubKey"]["addresses"][0];
+        } else {
+            try {
+                $txDecoded = $peercoin->getrawtransaction($Block["tx"][0], 1);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+            $FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["addresses"][0];
         }
-        $FoundBy = $txDecoded["vout"][1]["scriptPubKey"]["addresses"][0];
-    } else {
-        try {
-            $txDecoded = $peercoin->getrawtransaction($Block["tx"][0], 1);
-        } catch (Exception $e) {
-            die($e->getMessage());
-        }
-        $FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["addresses"][0];
     }
 
     //write foundBy to redis

@@ -6,9 +6,11 @@ import * as serviceWorker from "./serviceWorker";
 import "bootstrap/dist/css/bootstrap.min.css";
 import * as Sentry from "@sentry/browser";
 
-Sentry.init({
-  dsn: "https://073d02f1e1e643018c96f7ea08ad9f82@sentry.io/1764111"
-});
+if (process.env.NODE_ENV !== "development") {
+  Sentry.init({
+    dsn: "https://073d02f1e1e643018c96f7ea08ad9f82@sentry.io/1764111"
+  });
+}
 
 ReactDOM.render(<App />, document.getElementById("root"));
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Header from "./header";
 import Hero from "./hero";
-import BlockTable from "./blockTable";
+import TableSwitch from "./blockTable/tableSwitch";
 import Footer from "./footer";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -12,6 +12,9 @@ const Main = () => {
   const [modalBlockSelectedData, setModalBlockSelectedData] = useState({});
   const [lowestBlock, setLowestBlock] = useState(0);
   const [highestBlock, setHighestBlock] = useState(0);
+  const [searchAddress, setSearchAddress] = useState(
+    "PAmC3sKegu6AEZQdfXdPFNuoe6jfa9hCz4"
+  );
 
   return (
     <React.Fragment>
@@ -28,12 +31,13 @@ const Main = () => {
         />
         <Hero showModal={x => setModalStep(x)} />
         <hr className="col-xs-12" />
-        <BlockTable
+        <TableSwitch
           lowestBlock={lowestBlock}
-          setLowestBlock={setLowestBlock}
-          setHighestBlock={setHighestBlock}
+          raiseLowestBlock={setLowestBlock}
+          raiseHighestBlock={setHighestBlock}
           raiseModalBlockSelectedData={setModalBlockSelectedData}
           showModal={setModalStep}
+          searchAddress={searchAddress}
         />
         <hr className="col-xs-12" />
       </div>
