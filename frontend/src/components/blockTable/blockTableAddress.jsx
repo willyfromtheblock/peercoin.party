@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import http from "../../services/httpService";
 import InfiniteScroll from "react-infinite-scroller";
 import BlockCart from "../common/blockCart";
@@ -15,6 +15,15 @@ const BlockTableAddress = ({
   const [initialLoad, setInitialLoad] = useState(true);
   const [currentScroll, setCurrentScroll] = useState(0);
   const [hasMore, setMore] = useState(true);
+
+  useEffect(() => {
+    if (!initialLoad) {
+      setInitialLoad(true);
+      setBlockData([]);
+      setCurrentScroll(0);
+      fetchBlocks(0);
+    }
+  }, [searchAddress]);
 
   const fetchBlocks = async scroll => {
     let newScroll = scroll;
