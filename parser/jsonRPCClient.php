@@ -74,7 +74,7 @@ class Bitcoin {
         // performs the HTTP POST using curl
         $curl = curl_init();     
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);  
-        curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-type: application/json"));
+        curl_setopt($curl, CURLOPT_HTTPHEADER, Array("Content-type: application/json", "Connection: close"));
         curl_setopt($curl, CURLOPT_URL, $this->url);  
         curl_setopt($curl, CURLOPT_USERPWD, $this->username.":".$this->password);  
         curl_setopt($curl, CURLOPT_POST, TRUE);
@@ -101,4 +101,3 @@ class Bitcoin {
         return $response['result'];
     }
 }
-?>
