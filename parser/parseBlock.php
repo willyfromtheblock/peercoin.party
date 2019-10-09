@@ -7,6 +7,17 @@ include("functions.php");
 $redis = new Redis();
 $redis->connect('127.0.0.1', 6379, 2.5); // 2.5 sec timeout.
 
+//get redis lock
+$lock = $redis->get("parserLock");
+
+//locked ? die
+if ($lock !== false) {
+    die();
+} else {
+    //auto unlock after 30 minutes
+    $redis->set("parserLock", true, 1800);
+}
+
 //get current blockHeight in redis
 $RedisBlockHeight = getFromRedis("blockheight");
 
@@ -63,3 +74,6 @@ while ($RedisBlockHeight <= $HeightInClient) {
     //read blockheight 
     $RedisBlockHeight = getFromRedis("blockheight");
 }
+
+//delete lock
+$redis->del("parserLock");
