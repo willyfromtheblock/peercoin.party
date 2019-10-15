@@ -1,0 +1,27 @@
+{
+  "name": "party-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "dependencies": {
+    "fastify": "^2.10.0",
+    "fastify-rate-limit": "^2.4.0",
+    "fastify-redis": "^3.1.1",
+    "make-promises-safe": "^5.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bananenwilly/peercoin.party.git"
+  },
+  "author": "bananenwilly",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/bananenwilly/peercoin.party/issues"
+  },
+  "homepage": "https://github.com/bananenwilly/peercoin.party#readme"
+}
