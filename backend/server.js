@@ -1,6 +1,11 @@
 "use strict";
 require("make-promises-safe");
 
+const Sentry = require("@sentry/node");
+Sentry.init({
+  dsn: "https://4aec9cdad3c64a10a17dfbae658a1304@sentry.io/1780732"
+});
+
 const fastify = require("fastify")({
   logger: true
 });
