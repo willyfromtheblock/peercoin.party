@@ -19,10 +19,11 @@ const BlockTable = ({
     const mergedData = blockData.concat(result.data);
     setBlockData(mergedData);
     raiseLowestBlock(Object.keys(result.data[result.data.length - 1])[0]);
+    raiseHighestBlock(Object.keys(mergedData[0])[0]);
   };
 
   const loadMore = () => {
-    if (lowestBlock < 15 && lowestBlock !== 0) setMore(false);
+    if (lowestBlock < 5 && lowestBlock !== 0) setMore(false);
     else fetchBlocks(lowestBlock === 0 ? "0" : lowestBlock - 1);
   };
 

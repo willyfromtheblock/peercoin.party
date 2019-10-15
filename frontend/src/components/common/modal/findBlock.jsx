@@ -26,7 +26,7 @@ const FindBlock = ({
     if (!regEx.test(inputValue)) {
       changeInputError("Not a number!");
       success = false;
-    } else if (parseInt(inputValue) > highestBlock[0]) {
+    } else if (parseInt(inputValue) > highestBlock) {
       success = false;
       changeInputError("Invalid block number!");
     }
