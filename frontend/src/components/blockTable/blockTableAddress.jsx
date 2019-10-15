@@ -23,13 +23,14 @@ const BlockTableAddress = ({
       setCurrentScroll(0);
       fetchBlocks(0);
     }
+    // eslint-disable-next-line
   }, [searchAddress]);
 
   const fetchBlocks = async scroll => {
     let newScroll = scroll;
     if (initialLoad) {
-      const lenResult = await http.get("len.php?address=" + searchAddress);
-      raiseLowestBlock(lenResult.data.length);
+      const searchResult = await http.get("search/" + searchAddress);
+      raiseLowestBlock(searchResult.data.length);
       setInitialLoad(false);
     } else {
       if (scroll + 15 <= lowestBlock - 1) {
@@ -39,7 +40,7 @@ const BlockTableAddress = ({
       }
     }
     const result = await http.get(
-      "blocks.php?address=" + searchAddress + "&scroll=" + newScroll
+      "addressBlocks/" + searchAddress + "/" + newScroll
     );
     const mergedData = blockData.concat(result.data);
     setBlockData(mergedData);

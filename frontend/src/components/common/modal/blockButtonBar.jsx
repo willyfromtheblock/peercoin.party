@@ -11,6 +11,7 @@ const BlockButtonBar = ({ hash, blockIndex }) => {
 
         //add name spaces.
         if (
+          // eslint-disable-next-line
           !source.match(/^<svg[^>]+xmlns="http\:\/\/www\.w3\.org\/2000\/svg"/)
         ) {
           source = source.replace(
@@ -18,6 +19,7 @@ const BlockButtonBar = ({ hash, blockIndex }) => {
             '<svg xmlns="http://www.w3.org/2000/svg"'
           );
         }
+        // eslint-disable-next-line
         if (!source.match(/^<svg[^>]+"http\:\/\/www\.w3\.org\/1999\/xlink"/)) {
           source = source.replace(
             /^<svg/,

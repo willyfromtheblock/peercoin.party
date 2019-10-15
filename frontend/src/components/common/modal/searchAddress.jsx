@@ -21,7 +21,7 @@ const SearchAddress = ({ showModal, raiseSearchAddress }) => {
     let success = true;
     const inputValue = formData["addressInput"];
     //validate input
-    const { data } = await http.get("len.php?address=" + inputValue);
+    const { data } = await http.get("search/" + inputValue);
     if (data.length === 0) {
       changeInputError("Address not found.");
       success = false;

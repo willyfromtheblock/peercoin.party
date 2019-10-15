@@ -9,13 +9,12 @@ const BlockSingle = ({ block, showModal }) => {
 
   useEffect(() => {
     const fetchBlock = async () => {
-      const result = await http.get(
-        "blocks.php?scroll=" + block + "&single=true"
-      );
+      const result = await http.get("/single/" + block);
       const mergedData = blockData.concat(result.data);
       setBlockData(mergedData);
     };
     fetchBlock();
+    // eslint-disable-next-line
   }, []);
 
   if (blockData && blockData.length === 0) {
