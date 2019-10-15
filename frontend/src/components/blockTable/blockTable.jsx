@@ -15,7 +15,7 @@ const BlockTable = ({
   const [hasMore, setMore] = useState(true);
 
   const fetchBlocks = async scroll => {
-    const result = await http.get("blocks.php?scroll=" + scroll);
+    const result = await http.get("recent/" + scroll);
     const mergedData = blockData.concat(result.data);
     setBlockData(mergedData);
     raiseLowestBlock(Object.keys(result.data[result.data.length - 1])[0]);
