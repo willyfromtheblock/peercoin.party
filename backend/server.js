@@ -10,11 +10,6 @@ const fastify = require("fastify")({
   logger: true
 });
 
-fastify.register(require("fastify-rate-limit"), {
-  max: 100,
-  timeWindow: "30s"
-});
-
 fastify.register(require("fastify-redis"), { host: "127.0.0.1" });
 fastify.register(require("./recentBlocks"));
 fastify.register(require("./singleBlock"));
