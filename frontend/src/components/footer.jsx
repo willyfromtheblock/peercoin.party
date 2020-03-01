@@ -31,7 +31,7 @@ const Footer = props => {
               >
                 <span className="footer-donation-text-mobile ">Donate </span>
                 <span className="footer-donation-text">
-                  PA3VZmupxdsX5TuS1PyXZPsbbhZGT2htPz
+                  PPXMXETHJE3E8k6s8vmpDC18b7y5eKAudS
                 </span>
               </button>
             </p>
