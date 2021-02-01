@@ -6,7 +6,7 @@ const About = () => {
       <div className="m3 text-center" style={{ padding: "0.5rem" }}>
         Each{" "}
         <a
-          href="https://ppc.lol/283FE"
+          href="https://ppc.lol/dotnet"
           target="_blank"
           rel="noopener noreferrer "
         >
