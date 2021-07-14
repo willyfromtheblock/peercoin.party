@@ -9,7 +9,8 @@ $redis->connect('127.0.0.1', 6379, 2.5); // 2.5 sec timeout.
 
 //get redis lock
 $lock = $redis->get("parserLock");
-
+echo $lock; 
+echo "\n";
 //locked ? die
 if ($lock !== false) {
     die();
@@ -20,7 +21,8 @@ if ($lock !== false) {
 
 //get current blockHeight in redis
 $RedisBlockHeight = getFromRedis("blockheight");
-
+echo $RedisBlockHeight; 
+echo "Block height";
 //get client block height
 try {
     $HeightInClient = $peercoin->getblockcount();
@@ -51,14 +53,20 @@ while ($RedisBlockHeight <= $HeightInClient) {
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-            $FoundBy = $txDecoded["vout"][1]["scriptPubKey"]["addresses"][0];
+            $hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"]; 
+			$FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
         } else {
             try {
                 $txDecoded = $peercoin->getrawtransaction($Block["tx"][0], 1);
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-            $FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["addresses"][0];
+            if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "pubkey") {
+				$hexString = $txDecoded["vout"][0]["scriptPubKey"]["asm"]; 
+			} else {
+				$hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"]; 
+			}
+			$FoundBy = convertHexToAddress(explode(" ",$hexString)[0]);
         }
     }
 
