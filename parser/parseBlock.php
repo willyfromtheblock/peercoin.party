@@ -21,8 +21,8 @@ if ($lock !== false) {
 
 //get current blockHeight in redis
 $RedisBlockHeight = getFromRedis("blockheight");
+echo "Block height\n";
 echo $RedisBlockHeight; 
-echo "Block height";
 //get client block height
 try {
     $HeightInClient = $peercoin->getblockcount();
