@@ -1,7 +1,7 @@
 import React from "react";
 import BackToTopButton from "./common/backToTopButton";
 
-const Footer = props => {
+const Footer = (props) => {
   return (
     <footer className="footer navbar_ppc">
       <div className="container-fluid footer-container">
@@ -31,7 +31,7 @@ const Footer = props => {
               >
                 <span className="footer-donation-text-mobile ">Donate </span>
                 <span className="footer-donation-text">
-                  PPXMXETHJE3E8k6s8vmpDC18b7y5eKAudS
+                  PM7jjBUPjzpkZy1UZtD7mvmHoXJ2BGvbx9
                 </span>
               </button>
             </p>
