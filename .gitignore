@@ -3,3 +3,4 @@ frontend/.env.development
 backend/config.php
 backend/node_modules
 parser/parse.log
+.DS_Store
