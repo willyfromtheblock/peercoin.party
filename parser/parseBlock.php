@@ -62,7 +62,7 @@ while ($RedisBlockHeight <= $HeightInClient) {
                 die($e->getMessage());
             }
             if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "pubkeyhash") {
-				$FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["addresses"][0]; 
+				$FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["address"]; 
 			} else if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "nulldata") {
 				$hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"]; 
 				$FoundBy = convertHexToAddress(explode(" ",$hexString)[0]);
