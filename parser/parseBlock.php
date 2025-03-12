@@ -9,7 +9,7 @@ $redis->connect('127.0.0.1', 6379, 2.5); // 2.5 sec timeout.
 
 //get redis lock
 $lock = $redis->get("parserLock");
-echo $lock; 
+echo $lock;
 echo "\n";
 //locked ? die
 if ($lock !== false) {
@@ -22,7 +22,7 @@ if ($lock !== false) {
 //get current blockHeight in redis
 $RedisBlockHeight = getFromRedis("blockheight");
 echo "Block height\n";
-echo $RedisBlockHeight; 
+echo $RedisBlockHeight;
 //get client block height
 try {
     $HeightInClient = $peercoin->getblockcount();
@@ -53,25 +53,25 @@ while ($RedisBlockHeight <= $HeightInClient) {
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-            $hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"]; 
-			$FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
+            $hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"];
+            $FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
         } else {
             try {
                 $txDecoded = $peercoin->getrawtransaction($Block["tx"][0], 1);
             } catch (Exception $e) {
                 die($e->getMessage());
             }
-			if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "pubkeyhash") {
-				$FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["address"]; 
-			} else if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "nulldata") {
-				$hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"]; 
-				$FoundBy = convertHexToAddress(explode(" ",$hexString)[0]);
-			} else if($txDecoded["vout"][0]["scriptPubKey"]["type"] === "scripthash") {
-				$FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["address"];
-			} else {
-				$hexString = $txDecoded["vout"][0]["scriptPubKey"]["asm"]; 
-				$FoundBy = convertHexToAddress(explode(" ",$hexString)[0]);
-			}
+            $Vout0Type = $txDecoded["vout"][0]["scriptPubKey"]["type"];
+
+            if ($Vout0Type === "pubkeyhash" || $Vout0Type === "witness_v0_keyhash" || $Vout0Type === "scripthash") {
+                $FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["address"];
+            } else if ($Vout0Type === "nulldata") {
+                $hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"];
+                $FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
+            } else {
+                $hexString = $txDecoded["vout"][0]["scriptPubKey"]["asm"];
+                $FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
+            }
         }
     }
 
