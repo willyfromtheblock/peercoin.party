@@ -6,7 +6,7 @@ const Footer = (props) => {
     <footer className="footer navbar_ppc">
       <div className="container-fluid footer-container">
         <div className="row justify-content-center">
-          <div className="col-lg-1 col-md-2 col-3 text-light text-footer my-auto pt-1">
+          <div className="col-lg-2 col-md-2 col-3 text-light text-footer my-auto pt-1">
             Icons:
             <a
               className="footer-link"
@@ -16,6 +16,13 @@ const Footer = (props) => {
             >
               {" "}
               icons8.de
+            </a>
+            <a href="https://www.coinerella.com" target="_blank" rel="noopener noreferrer">
+              <img
+                src="https://fonts.peercoinexplorer.net/coinerella.png"
+                alt="Coinerella"
+                style={{ height: "25px", verticalAlign: "middle" }}
+              />
             </a>
           </div>
           <div className="col-lg col-md col-4">
