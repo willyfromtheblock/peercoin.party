@@ -1,5 +1,5 @@
 import React from "react";
-import QRCode from "qrcode.react";
+import { QRCodeCanvas as QRCode } from "qrcode.react";
 
 const DonationModal = () => {
   return (
