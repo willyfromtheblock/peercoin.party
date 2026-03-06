@@ -63,11 +63,10 @@ while ($RedisBlockHeight <= $HeightInClient) {
             }
             $Vout0Type = $txDecoded["vout"][0]["scriptPubKey"]["type"];
 
-            if ($Vout0Type === "pubkeyhash" || $Vout0Type === "witness_v0_keyhash" || $Vout0Type === "scripthash") {
+            if ($Vout0Type === "nulldata") {
+                $FoundBy = $txDecoded["vout"][1]["scriptPubKey"]["address"];
+            } else if (isset($txDecoded["vout"][0]["scriptPubKey"]["address"])) {
                 $FoundBy = $txDecoded["vout"][0]["scriptPubKey"]["address"];
-            } else if ($Vout0Type === "nulldata") {
-                $hexString = $txDecoded["vout"][1]["scriptPubKey"]["asm"];
-                $FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
             } else {
                 $hexString = $txDecoded["vout"][0]["scriptPubKey"]["asm"];
                 $FoundBy = convertHexToAddress(explode(" ", $hexString)[0]);
