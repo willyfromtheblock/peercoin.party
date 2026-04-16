@@ -10,13 +10,13 @@ const fastify = require("fastify")({
   logger: true
 });
 
-fastify.register(require("fastify-redis"), { host: "127.0.0.1" });
+fastify.register(require("@fastify/redis"), { host: "127.0.0.1" });
 fastify.register(require("./recentBlocks"));
 fastify.register(require("./singleBlock"));
 fastify.register(require("./searchAddress"));
 fastify.register(require("./addressBlocks"));
 
-fastify.listen(3000, "0.0.0.0", function(err, address) {
+fastify.listen({ port: 3000, host: "0.0.0.0" }, function(err, address) {
   if (err) {
     fastify.log.error(err);
     process.exit(1);
