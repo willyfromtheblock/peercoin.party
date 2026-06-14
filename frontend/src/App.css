@@ -140,6 +140,6 @@ a.footer-link:hover {
     display: block;
   }
   .logo {
-    height: 2rem !;
+    height: 2rem !important;
   }
 }
