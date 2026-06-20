@@ -5,7 +5,7 @@
   "main": "server.js",
   "dependencies": {
     "@fastify/redis": "^5.0.0",
-    "@sentry/node": "^8.49.0",
+    "@sentry/node": "^10.58.0",
     "fastify": "^5.8.5",
     "make-promises-safe": "^5.1.0"
   },
